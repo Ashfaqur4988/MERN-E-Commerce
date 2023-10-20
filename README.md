@@ -267,6 +267,12 @@ routes: src should be the path and dest should be the file
 make a new repo in github so that we can use that to host our app in vercel
 create new repo
 now push the code in that new repo
+import the new repo in vercel and add the environment variables
+deployed
+
+now go to stripe developers mode and add an endpoint
+add the url and select all the events that we want to read(payment intent)
+while testing the payment part found a bug that after payment it is redirecting to the login page, need to change it from the frontend
 
 -----after deployment------------
 SETTING UP THE PASSWORD RESET ISSUE:
