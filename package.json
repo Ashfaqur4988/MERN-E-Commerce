@@ -1,0 +1,38 @@
+{
+  "name": "react-ecommerce-backend",
+  "version": "1.0.0",
+  "description": "Backend for the E-commerce web app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashfaqur4988/react-ecommerce-backEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashfaqur4988/react-ecommerce-backEnd/issues"
+  },
+  "homepage": "https://github.com/Ashfaqur4988/react-ecommerce-backEnd#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.5.1",
+    "nodemailer": "^6.9.6",
+    "nodemon": "^3.0.1",
+    "npm": "^10.1.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "stripe": "^13.10.0"
+  }
+}
