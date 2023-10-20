@@ -107,6 +107,9 @@ app.use("/auth", authRouters.router);
 app.use("/cart", isAuth(), cartRouters.router);
 app.use("/orders", isAuth(), orderRouters.router);
 
+//this lone we add to make react router work in case of other routes doesn't match
+app.get("*", (req, res) => res.sendFile(path.resolve("build", "index.html")));
+
 //Mail endpoint
 // app.post("/mail", async (req, res) => {
 //   // send mail with defined transport object

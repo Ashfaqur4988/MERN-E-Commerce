@@ -275,6 +275,13 @@ add the url and select all the events that we want to read(payment intent)
 while testing the payment part found a bug that after payment it is redirecting to the login page, need to change it from the frontend
 frontEnd change done
 
+removing routes from vercel json and putting "rewrites": [{"source": "/(.*)", "destination": "index.js"}], this line will make sure that vercel will pick the routing from node only
+
+//this line we add to make react router work in case of other routes doesn't match
+app.get("\*", (req, res) => res.sendFile(path.resolve("build", "index.html")));
+
+in frontend changed the /orders to /my-orders
+
 -----after deployment------------
 SETTING UP THE PASSWORD RESET ISSUE:
 NODE MAILER shall be used
