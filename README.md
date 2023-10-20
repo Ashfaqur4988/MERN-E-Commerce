@@ -282,6 +282,8 @@ app.get("\*", (req, res) => res.sendFile(path.resolve("build", "index.html")));
 
 in frontend changed the /orders to /my-orders
 
+orderId will get from req.body and then put it in meta data, stripe part in index js
+
 -----after deployment------------
 SETTING UP THE PASSWORD RESET ISSUE:
 NODE MAILER shall be used
