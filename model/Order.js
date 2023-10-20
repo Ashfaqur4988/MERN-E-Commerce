@@ -8,6 +8,7 @@ const orderSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   //TODO: shall use enum types later
   paymentMethod: { type: String, required: true },
+  paymentStatus: { type: String, default: "pending" },
   status: { type: String, default: "pending" },
   selectedAddress: { type: Schema.Types.Mixed, required: true },
 });

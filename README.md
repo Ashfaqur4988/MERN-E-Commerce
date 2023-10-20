@@ -283,6 +283,15 @@ app.get("\*", (req, res) => res.sendFile(path.resolve("build", "index.html")));
 in frontend changed the /orders to /my-orders
 
 orderId will get from req.body and then put it in meta data, stripe part in index js
+now checking the webhook in the developers dashboard, we can see that the meta data has been sent to the server and in the deployment logs we find the metadata
+
+made a new object in order model, paymentStatus: default: "pending" and after the payment is made the webhook will change the status to received
+we need to get the orderId through which we can manipulate the webhook's actions to our desire
+
+inside handle webhook
+we can get the orderId from paymentIntentSucceeded.metadata.orderId
+update the order's payment status as received and save the order
+this event will fire when the payment-intent is success (switch case)
 
 -----after deployment------------
 SETTING UP THE PASSWORD RESET ISSUE:
