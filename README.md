@@ -273,6 +273,7 @@ deployed
 now go to stripe developers mode and add an endpoint
 add the url and select all the events that we want to read(payment intent)
 while testing the payment part found a bug that after payment it is redirecting to the login page, need to change it from the frontend
+frontEnd change done
 
 -----after deployment------------
 SETTING UP THE PASSWORD RESET ISSUE:
