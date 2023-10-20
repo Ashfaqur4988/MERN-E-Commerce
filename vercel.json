@@ -59,6 +59,14 @@
       "dest": "index.js"
     },
     {
+      "src": "/cart",
+      "dest": "index.js"
+    },
+    {
+      "src": "/cart/(.*)",
+      "dest": "index.js"
+    },
+    {
       "src": "/webhook",
       "dest": "index.js"
     },
