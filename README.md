@@ -306,5 +306,40 @@ add the user email and use the node 2 step verification app password(created) an
 now take the code from nodemailer docs and apply it in the code,
 make a transporter first above the middleware codes (paste code from nodemailer)
 we shall get the mail id from the body
-we make a post request using the second part of the code, below the routes in index js
+we make a post request using the second part of the code, below the routes in index js and send the info that comes from the call
 test the api with postman and head to frontEnd
+
+after doing the ui required changes
+
+we donot want external access to make api calls to the mail api so
+we are putting the transporter part and a new function as sendMail and inside it the code for sending mail, all these in the common services, the function will return the info
+we can provide the to, subject, html, body from the function parameters as an OBJECT
+
+in the auth controller make a new api path -> reset-password-request and resetPasswordRequest
+in resetPasswordRequest function declare the constants of the mail, like message, html body, texts
+get the to from req.body.email, if exist then send the info else send error status
+
+now test it, after testing head to frontend and make a new component as password reset page
+after making the UI changes
+
+make a resetPassword function in the auth controller to reset the new password
+we need to send a token along with the reset link so that security must be there
+
+make the reset password token in the user schema and type is string and blank (user schema)
+NOTE:IN AUTH controller
+whenever someone send a reset mail to the email address, during that time a token will be generated and saved in the database. this token will be used to check the if it is the same user
+in resetPasswordRequest we will find the user with the provided email whether it is present in our db
+if user exists then we shall generate a token [random string], there plenty of algorithms to generate token, we can use any of them, currently we are crypto
+after the user is found, we saved the token in the db, then append the token and email in the query string of the reset password link
+provide the mail recipient, the subject, the html to be included
+another nested if will check if the email is present (req.body), if present then put the mail information inside the sentMail function as destructured objects and execute it
+now we can access the token and the email from the frontend
+
+go to frontend now
+
+make a new function resetPassword and attach a route to it
+inside the function destructure the email, token and password from req.body
+if the token and email exist in the db then take the user
+use the crypto algo to hash the new password and save the user [the new password has been saved now]
+prepare the mail body and subject then if mail exists then use the sendMail function to send the mail with these new subject and body
+if all okay then normal response if not then the server will respond with error status

@@ -11,7 +11,6 @@ const cookieParser = require("cookie-parser");
 const JwtStrategy = require("passport-jwt").Strategy; //jwt  strategy already present in passport
 const ExtractJwt = require("passport-jwt").ExtractJwt; // extract jwt from client request
 const productsRouters = require("./routes/Products"); //'/products' is the base path
-const nodemailer = require("nodemailer"); //nodemailer
 const brandsRouters = require("./routes/Brands");
 const categoryRouters = require("./routes/Categories");
 const userRouters = require("./routes/User");
@@ -28,18 +27,6 @@ const { Order } = require("./model/Order");
 const opts = {};
 opts.jwtFromRequest = cookieExtractor;
 opts.secretOrKey = process.env.JWT_SECRET_KEY;
-
-//send password reset mail
-// const transporter = nodemailer.createTransport({
-//   host: "smtp.gmail.com",
-//   port: 465,
-//   secure: true,
-//   auth: {
-//     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-//     user: "ashfakur1@gmail.com",
-//     pass: process.env.MAILER_PASSWORD,
-//   },
-// });
 
 //webhook
 //TODO: we will capture the actual order after deploying out in our server
@@ -115,21 +102,6 @@ app.use("/orders", isAuth(), orderRouters.router);
 
 //this lone we add to make react router work in case of other routes doesn't match
 app.get("*", (req, res) => res.sendFile(path.resolve("build", "index.html")));
-
-//Mail endpoint
-// app.post("/mail", async (req, res) => {
-//   // send mail with defined transport object
-//   const { to } = req.body;
-//   const info = await transporter.sendMail({
-//     from: '"E-commerce" <ashfakur1@gmail.com>', // sender address
-//     to: to, // list of receivers
-//     subject: "Hello ✔", // Subject line
-//     text: "Hello world?", // plain text body
-//     html: "<b>Hello world?</b>", // html body
-//   });
-
-//   res.json(info);
-// });
 
 //passport strategies
 passport.use(

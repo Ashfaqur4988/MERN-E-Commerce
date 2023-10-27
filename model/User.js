@@ -10,6 +10,7 @@ const userSchema = new Schema({
   name: { type: String },
   salt: Buffer,
   // order: { type: [Schema.Types.Mixed] },
+  resetPasswordToken: { type: String, default: "" },
 });
 
 //virtual creation
