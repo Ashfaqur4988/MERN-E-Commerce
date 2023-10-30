@@ -59,6 +59,7 @@ exports.checkAuth = async (req, res) => {
   }
 };
 
+//reset password request
 exports.resetPasswordRequest = async (req, res) => {
   //let send email and a token in the mail body so we can verify that user has clicked right link
   // a token along with the link will be provided for verification
@@ -87,6 +88,7 @@ exports.resetPasswordRequest = async (req, res) => {
   }
 };
 
+//reset the password
 exports.resetPassword = async (req, res) => {
   const { email, password, token } = req.body;
 
@@ -125,4 +127,13 @@ exports.resetPassword = async (req, res) => {
   } else {
     res.sendStatus(400);
   }
+};
+
+exports.signOut = async (req, res) => {
+  res
+    .cookie("jwt", null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    })
+    .sendStatus(200);
 };

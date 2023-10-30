@@ -343,3 +343,17 @@ if the token and email exist in the db then take the user
 use the crypto algo to hash the new password and save the user [the new password has been saved now]
 prepare the mail body and subject then if mail exists then use the sendMail function to send the mail with these new subject and body
 if all okay then normal response if not then the server will respond with error status
+
+SIGN OUT:
+sign out should clear the cookies and redirect to login page
+until and unless we dont remove the cookie the session will be on place and login will trigger everytime
+remove the token from server and client side
+
+for client side we need to go to the frontend
+
+make the api in auth controller [signOut] and set the route to '/logout'
+make the token null and set the time of now and send status 200
+no need to send anything back
+
+adding timestamps in our schemas:
+add at the end of the schema declaration -> {timestamp: true}
