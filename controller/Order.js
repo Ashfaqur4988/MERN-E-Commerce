@@ -1,9 +1,20 @@
 const { Order } = require("../model/Order");
+const { User } = require("../model/User");
+const { sendMail, invoiceTemplate } = require("../services/common");
 
 exports.createOrder = async (req, res) => {
   const order = new Order(req.body);
   try {
     const doc = await order.save();
+    //finding the corresponding user of this order
+    const user = await User.findById(order.user);
+    //sending the mail to the user email id
+    sendMail({
+      to: user.email,
+      html: invoiceTemplate(order),
+      subject: "Order Receive",
+    });
+
     const result = await doc.populate("user");
     res.status(201).json(result);
   } catch (error) {

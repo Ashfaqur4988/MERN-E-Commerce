@@ -357,3 +357,15 @@ no need to send anything back
 
 adding timestamps in our schemas:
 add at the end of the schema declaration -> {timestamp: true}
+
+using the timestamp to add new section in admin dashboard in frontend
+
+EMAIL INVOICE:
+taken from google [html]
+in common we shall make a function that will return the generated invoice
+after altering the details
+call the sendMail function in the createOrder function in the order controller
+and pass the to from user.email, subject amd html call the htmlInvoice template(pass the order)
+
+{to solve the cors issue we need to add --ignore client in dev inside script}
+**chunk error where the invoiceTemplate was declared as async should be removed**
