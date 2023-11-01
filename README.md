@@ -369,3 +369,8 @@ and pass the to from user.email, subject amd html call the htmlInvoice template(
 
 {to solve the cors issue we need to add --ignore client in dev inside script}
 **chunk error where the invoiceTemplate was declared as async should be removed**
+
+adding the size, color and other misc fields in the productSchema:
+Schema.Types.Mixed for sizes, colors and string highlights
+
+go to the frontEnd to add them

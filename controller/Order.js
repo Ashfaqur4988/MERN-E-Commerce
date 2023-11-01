@@ -14,7 +14,6 @@ exports.createOrder = async (req, res) => {
       html: invoiceTemplate(order),
       subject: "Order Receive",
     });
-
     const result = await doc.populate("user");
     res.status(201).json(result);
   } catch (error) {
