@@ -5,6 +5,8 @@ const cartSchema = new Schema({
   product: { type: Schema.Types.ObjectId, ref: "Product", required: true }, //reference to the Product schema
   quantity: { type: Number, required: true },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true }, //reference to the User schema
+  size: { type: Schema.Types.Mixed },
+  colors: { type: Schema.Types.Mixed },
 });
 
 //virtual creation

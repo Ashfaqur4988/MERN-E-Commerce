@@ -374,3 +374,9 @@ adding the size, color and other misc fields in the productSchema:
 Schema.Types.Mixed for sizes, colors and string highlights
 
 go to the frontEnd to add them
+after frontend
+
+update the cart schema to handle the colors and sizes:
+add the colors size schema type mixed
+
+adding highlights in the frontend so add the highlight in the product schema
