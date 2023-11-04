@@ -4,8 +4,14 @@ const { Product } = require("../model/Product");
 exports.updateProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await Product.findByIdAndUpdate(id, req.body, { new: true }); //for patch methods
-    res.status(201).json(doc);
+    const product = await Product.findByIdAndUpdate(id, req.body, {
+      new: true,
+    }); //for patch methods
+    product.discountPrice = Math.round(
+      product.price * (1 - product.discountPercentage / 100)
+    );
+    const updatedProduct = await product.save();
+    res.status(201).json(updatedProduct);
   } catch (error) {
     res.status(400).json(error);
   }
@@ -26,6 +32,9 @@ exports.fetchProductById = async (req, res) => {
 exports.addProduct = async (req, res) => {
   //creating an instance of the Product from the model folder
   const product = new Product(req.body);
+  product.discountPrice = Math.round(
+    product.price * (1 - product.discountPercentage / 100)
+  );
   try {
     //saving the product
     const doc = await product.save();
@@ -46,20 +55,24 @@ exports.fetchAllProduct = async (req, res) => {
   //for total count
   let totalProductQuery = Product.find(condition);
 
+  console.log(req.query.category);
+
   //category is also in the query
   if (req.query.category) {
     //filter object = {category: ["smartphone","laptop]"}
-    query = query.find({ category: req.query.category });
+    query = query.find({ category: { $in: req.query.category.split(",") } });
     totalProductQuery = totalProductQuery.find({
-      category: req.query.category,
+      category: { $in: req.query.category.split(",") },
     });
   }
 
   //brand is also in the query
   if (req.query.brand) {
     //filter object = {brand: brandName}
-    query = query.find({ brand: req.query.brand });
-    totalProductQuery = totalProductQuery.find({ brand: req.query.brand });
+    query = query.find({ brand: { $in: req.query.brand.split(",") } });
+    totalProductQuery = totalProductQuery.find({
+      brand: { $in: req.query.brand.split(",") },
+    });
   }
 
   //sorting query

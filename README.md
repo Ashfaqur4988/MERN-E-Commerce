@@ -380,3 +380,19 @@ update the cart schema to handle the colors and sizes:
 add the colors size schema type mixed
 
 adding highlights in the frontend so add the highlight in the product schema
+
+MULTIPLE CATEGORIES, BRANDS, AND OTHER FILTER:
+we need to make changes in backend as well as in the frontend
+from frontend we are sending the array of required filters but in backend we sending the last value of the selected check box
+generally in js the array become comma separated when converted into string, for this we will have to use $in query and split the category, this will make the string into an array
+$in query acts on array and it looks if this category allowed in any part then it will give the result
+putting the $in query in all the find statements
+**should read about this $in query**
+
+SORTING SHOULD BE DONE BY DISCOUNTED PRICE:
+make a new field in the productSchema of type number
+whenever we are creating a new product we need to calculate the discount price and save it [product controller]
+in updateProduct put the discountPrice logic inside try block and save it in updatedProduct
+NO CHANGES IN FRONTEND
+
+**_removing the TODOs now_**

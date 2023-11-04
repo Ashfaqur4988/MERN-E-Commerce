@@ -29,7 +29,7 @@ opts.jwtFromRequest = cookieExtractor;
 opts.secretOrKey = process.env.JWT_SECRET_KEY;
 
 //webhook
-//TODO: we will capture the actual order after deploying out in our server
+
 const endpointSecret = process.env.ENDPOINT_SECRET;
 app.post(
   "/webhook",
