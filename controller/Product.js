@@ -76,7 +76,6 @@ exports.fetchAllProduct = async (req, res) => {
   }
 
   //sorting query
-  //TODO: sorting should be from the discounted value
   if (req.query._sort && req.query._order) {
     //sort object = {_sort: "price", _order:"desc"}
     query = query.sort({ [req.query._sort]: req.query._order });

@@ -395,4 +395,6 @@ whenever we are creating a new product we need to calculate the discount price a
 in updateProduct put the discountPrice logic inside try block and save it in updatedProduct
 NO CHANGES IN FRONTEND
 
+adding ENUM in order schema for payment methods and also added the error methods
+
 **_removing the TODOs now_**
