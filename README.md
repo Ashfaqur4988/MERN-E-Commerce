@@ -397,4 +397,10 @@ NO CHANGES IN FRONTEND
 
 adding ENUM in order schema for payment methods and also added the error methods
 
+STOCK UPDATE AFTER EVERY ORDER:
+in every order creation we are updating the stock data
+in mongo there is no direct decrement so we shall have to use negative increment
+we shall loop through the orders and the find the product id and store it in a variable product
+then apply the $inc function on the variable product with parameters ('name of the field to be updated', how much to be updated) [second parameter is item.quantity and to make it negative multiply by -1]
+
 **_removing the TODOs now_**
